@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: My Banner Plugin
+Plugin Name: M-M Banner Plugin
 Plugin URI: https://github.com/MatteoRuffa/M-M-banner-plugin
 Description: Plugin che registra un CPT "banner", shortcode per visualizzarlo e template dedicato.
 Version: 1.0
@@ -36,7 +36,7 @@ function my_banner_plugin_enqueue_assets() {
     
     // Enqueue del CSS
     wp_enqueue_style(
-        'my-banner-plugin-styles', $css_url, array(), '1.0.0'                    
+        'M-M-banner-plugin-styles', $css_url, array(), '1.0.0'                    
     );
 }
 
@@ -57,7 +57,7 @@ function my_banner_admin_scripts($hook_suffix) {
 
     // Carica lo script personalizzato
     wp_enqueue_script(
-        'my-banner-preview',
+        'M-M-banner-preview',
         plugin_dir_url(__FILE__) . 'assets/js/metabox-preview.js',
         array('jquery'),
         '1.0',
