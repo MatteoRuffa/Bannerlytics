@@ -34,7 +34,8 @@ function my_custom_dashboard_widget_display() {
             $banner_id    = get_the_ID();
             $banner_title = get_the_title();
             $banner_img   = get_post_meta($banner_id, '_immagine', true);
-            $banner_link  = get_post_meta($banner_id, '_link_bottone', true);
+            $banner_desc  = get_post_meta($banner_id, '_descrizione', true);
+            $banner_url   = get_permalink($banner_id);
 
             // Stampa ciascun banner con uno stile di card
             echo '<div class="dashboard-banner-card">';
@@ -44,7 +45,8 @@ function my_custom_dashboard_widget_display() {
             } else {
                 echo '<p class="dashboard-no-image">Nessuna immagine disponibile.</p>';
             }
-            echo '<p><a href="' . esc_url($banner_link) . '" target="_blank" class="dashboard-banner-link">Vai al banner</a></p>';
+            echo '<p class="dashboard-banner-description">' . esc_html($banner_desc) . '</p>';
+            echo '<p><a href="' . esc_url($banner_url) . '" target="_blank" class="dashboard-banner-link">Vai al banner</a></p>';  
             echo '</div>';
         }
         echo '</div>';
@@ -53,7 +55,6 @@ function my_custom_dashboard_widget_display() {
         echo '<p class="dashboard-no-banner">Non ci sono banner pubblicati al momento.</p>';
     }
 }
-
 
 // Enqueue del CSS per la dashboard
 add_action('admin_enqueue_scripts', 'my_custom_dashboard_styles');
