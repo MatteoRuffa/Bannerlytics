@@ -1,22 +1,39 @@
 jQuery(document).ready(function($) {
-    // Seleziono il campo URL e l'img preview
-    let $imageField = $('#banner_image_url');
-    let $previewImg = $('#banner_image_preview');
+    var mediaUploader;
 
-    // Funzione per aggiornare l'anteprima
-    function updatePreview() {
-        let url = $imageField.val().trim();
-        if (url) {
-            $previewImg.attr('src', url).show();
-        } else {
-            $previewImg.hide();
+    // Pulsante "Seleziona immagine"
+    $('.select-banner-image').on('click', function(e) {
+        e.preventDefault();
+
+        if (mediaUploader) {
+            mediaUploader.open();
+            return;
         }
-    }
 
-    // Evento: quando cambia il valore nel campo
-    $imageField.on('input change', function() {
-        updatePreview();
+        // Inizializza la libreria media
+        mediaUploader = wp.media({
+            title: 'Seleziona un\'immagine',
+            button: {
+                text: 'Usa questa immagine'
+            },
+            multiple: false // Singola immagine
+        });
+
+        mediaUploader.on('select', function() {
+            var attachment = mediaUploader.state().get('selection').first().toJSON();
+            $('#banner-image-url').val(attachment.url);
+            $('#banner-image-preview').attr('src', attachment.url).show();
+            $('.remove-banner-image').show();
+        });
+
+        mediaUploader.open();
     });
 
-    updatePreview();
+    // Pulsante "Rimuovi immagine"
+    $('.remove-banner-image').on('click', function(e) {
+        e.preventDefault();
+        $('#banner-image-url').val('');
+        $('#banner-image-preview').attr('src', '#').hide();
+        $(this).hide();
+    });
 });

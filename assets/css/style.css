@@ -82,10 +82,20 @@
        text-align: center;
    }
 
-   /* ridimensionamento img del banner */
-   .banner .banner-img {
-        max-width: 350px!important;
-        height: auto;
+   .banner-image-preview img {
+        border: 1px solid #ddd;
+        padding: 5px;
+        margin-top: 10px;
+    }
+
+    .select-banner-image {
+        margin-top: 10px;
+    }
+
+    .remove-banner-image {
+        margin-top: 10px;
+        background-color: #f44336;
+        color: #fff;
     }
    
    @media (max-width: 640px) {

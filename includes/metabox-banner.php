@@ -83,15 +83,19 @@ function webperformer_banner_metabox_callback($post) {
 
     // -------------------- RIGA 2 --------------------
     echo '<div style="display:flex; gap:20px; margin-top:20px;">';
-    // Immagine (URL)
+    // Immagine (con selezione da libreria media di WordPress)
     echo '<div style="flex:1;">';
-    echo '<p><label><strong>Immagine (URL)</strong></label><br/>';
-    echo '<input type="text" name="immagine" id="banner_image_url" value="' . esc_attr($immagine) . '" placeholder="https://..." style="width:100%;" />';
-    // Aggiungo un div per la preview
-    echo '<div style="margin-top:10px;">';
-    echo '<img id="banner_image_preview" src="' . esc_url($immagine) . '" alt="" style="max-width:100%; max-height:150px; display:' . ($immagine ? 'block' : 'none') . ';" />';
+    echo '<p><label><strong>Immagine</strong></label><br/></p>';
+    echo '<div class="banner-image-preview" style="margin-bottom: 10px;">';
+    if (!empty($immagine)) {
+        echo '<img id="banner-image-preview" src="' . esc_url($immagine) . '" alt="" style="max-width: 350px; height: auto; display: block;">';
+    } else {
+        echo '<img id="banner-image-preview" src="#" alt="" style="max-width: 350px; height: auto; display: none;">';
+    }
     echo '</div>';
-    echo '</p>';
+    echo '<input type="hidden" id="banner-image-url" name="immagine" value="' . esc_attr($immagine) . '">';
+    echo '<button type="button" class="button select-banner-image">Seleziona immagine</button>';
+    echo '<button type="button" class="button remove-banner-image" style="display:none;">Rimuovi immagine</button>';
     echo '</div>';
 
 
