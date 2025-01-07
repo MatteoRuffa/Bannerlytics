@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: My Banner Plugin
-Plugin URI: https://example.com
+Plugin URI: https://github.com/MatteoRuffa/M-M-banner-plugin
 Description: Plugin che registra un CPT "banner", shortcode per visualizzarlo e template dedicato.
 Version: 1.0
-Author: Il Tuo Nome
-Author URI: https://example.com
+Author: Matteo R
+Author URI: https://github.com/MatteoRuffa?tab=repositories
 License: GPL2
 */
 
@@ -27,4 +27,16 @@ function my_banner_single_template($single) {
         return plugin_dir_path(__FILE__) . 'templates/single-banner.php';
     }
     return $single;
+}
+
+// 1. Enqueue del CSS del plugin
+add_action('wp_enqueue_scripts', 'my_banner_plugin_enqueue_assets');
+function my_banner_plugin_enqueue_assets() {
+    // Definisci il percorso al file CSS
+    $css_url = plugin_dir_url(__FILE__) . 'assets/css/style.css';
+    
+    // Enqueue del CSS
+    wp_enqueue_style(
+        'my-banner-plugin-styles', $css_url, array(), '1.0.0'                    
+    );
 }
