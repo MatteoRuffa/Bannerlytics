@@ -91,7 +91,7 @@ get_header();
             $string .= '<div class="width-40 first-m">';
         }
 
-        $string .= '<img src="' . esc_url($immagine) . '" alt="Banner image" loading="lazy" style="max-width: 350px; height: auto; display: block; margin: 0 auto;">
+        $string .= '<img src="' . esc_url($immagine) . '" alt="Banner image" loading="lazy" class="banner-image">
                     </div> 
                 </div> 
             </div> 

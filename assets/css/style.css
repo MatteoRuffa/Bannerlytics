@@ -1,8 +1,5 @@
 /* Stili personalizzati specifici per i Banner */
 
-/* Nascondi header e footer, se serve solo in questa pagina
-   (puoi eventualmente differenziare con body.single-banner se vuoi mirare
-   solo a quella tipologia) */
    .single-banner .site-header, 
    .single-banner footer {
        display: none !important;
@@ -98,6 +95,15 @@
         color: #fff;
     }
    
+    .banner-image {
+        max-width: 350px;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        border-radius: 8px;
+    }
+
+    
    @media (max-width: 640px) {
        .margin-medium-bottom {
            margin-left: 20px;
