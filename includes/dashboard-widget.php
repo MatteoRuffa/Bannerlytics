@@ -34,19 +34,29 @@ function my_custom_dashboard_widget_display() {
             $banner_id    = get_the_ID();
             $banner_title = get_the_title();
             $banner_img   = get_post_meta($banner_id, '_immagine', true);
-            $banner_desc  = get_post_meta($banner_id, '_descrizione', true);
-            $banner_url   = get_permalink($banner_id);
+            $banner_descr  = get_post_meta($banner_id, '_descrizione', true);
+            $banner_descr  = wp_trim_words($banner_descr, 20, '...');
+            $tipologia_img = get_post_meta($banner_id, '_tipologia_immagine_desktop', true);
 
-            // Stampa ciascun banner con uno stile di card
-            echo '<div class="dashboard-banner-card">';
-            echo '<h3 class="dashboard-banner-title">' . esc_html($banner_title) . '</h3>';
-            if ($banner_img) {
-                echo '<img src="' . esc_url($banner_img) . '" alt="' . esc_attr($banner_title) . '" class="dashboard-banner-image" style=" max-width: 350px; ">';
+           // Stampa la card rettangolare con immagine a sinistra o destra
+            echo '<div class="dashboard-banner-card-horizontal">';
+            if ($tipologia_img === 'sinistra') {
+                echo '<div class="dashboard-banner-image-wrapper">';
+                echo '<img src="' . esc_url($banner_img) . '" alt="' . esc_attr($banner_title) . '" class="dashboard-banner-image">';
+                echo '</div>';
+                echo '<div class="dashboard-banner-text">';
+                echo '<h3 class="dashboard-banner-title">' . esc_html($banner_title) . '</h3>';
+                echo '<p class="dashboard-banner-description">' . esc_html($banner_descr) . '</p>';
+                echo '</div>';
             } else {
-                echo '<p class="dashboard-no-image">Nessuna immagine disponibile.</p>';
+                echo '<div class="dashboard-banner-text">';
+                echo '<h3 class="dashboard-banner-title">' . esc_html($banner_title) . '</h3>';
+                echo '<p class="dashboard-banner-description">' . esc_html($banner_descr) . '</p>';
+                echo '</div>';
+                echo '<div class="dashboard-banner-image-wrapper">';
+                echo '<img src="' . esc_url($banner_img) . '" alt="' . esc_attr($banner_title) . '" class="dashboard-banner-image">';
+                echo '</div>';
             }
-            echo '<p class="dashboard-banner-description">' . esc_html($banner_desc) . '</p>';
-            echo '<p><a href="' . esc_url($banner_url) . '" target="_blank" class="dashboard-banner-link">Vai al banner</a></p>';  
             echo '</div>';
         }
         echo '</div>';

@@ -1,73 +1,56 @@
- /*-----------------------------------
-            Banners dashboard
-    ------------------------------------*/
-    /* Container generale */
-    .dashboard-banner-preview-container {
-        
-        margin: 0 auto;
-        display: flex;
-        gap: 20px;
-        padding: 10px 0;
-    }
+/* Contenitore generale */
+.dashboard-banner-preview-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px 0;
+}
 
-    /* Card del banner */
-    .dashboard-banner-card {
-        max-width: 100%;
-        flex: 1;
-        border: 1px solid black;
-        border-radius: 8px;
-        padding: 10px;
-        background-color: #fff;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        
-    }
+/* Card rettangolare orizzontale */
+.dashboard-banner-card-horizontal {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    height: 160px;
+}
 
-    /* Titolo del banner */
-    .dashboard-banner-title {
-        font-size: 16px;
-        margin-top: 0;
-        margin-bottom: 10px;
-    }
+/* Sezione immagine */
+.dashboard-banner-image-wrapper {
+    width: 40%;
+    max-width: 350px;
+    height: 100%;
+}
 
-    /* Immagine del banner */
-    .dashboard-banner-image {
-        max-width: 100% !important;
-        max-height: auto !important;
-        border-radius: 8px;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    }
+.dashboard-banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px 0 0 8px;
+}
 
-    /* Messaggio per immagini mancanti */
-    .dashboard-no-image {
-        color: #999;
-        font-style: italic;
-    }
+/* Sezione testo */
+.dashboard-banner-text {
+    padding: 20px;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
-    /* Link al banner */
-    .dashboard-banner-link {
-        display: inline-block;
-        padding: 8px 16px;
-        background-color: #0073aa;
-        color: #fff;
-        border-radius: 5px;
-        text-decoration: none;
-        font-size: 14px;
-        margin-top: 10px;
-    }
+.dashboard-banner-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
 
-    /* Hover sul link */
-    .dashboard-banner-link:hover {
-        background-color: #005f8d;
-    }
-
-    /* Aggiunta di una riga di descrizione */
-    .dashboard-banner-description {
-        font-size: 14px;
-        color: #555;
-        max-width: 100%;
-        white-space: nowrap;
-        overflow: hidden;    
-        text-overflow: ellipsis; 
-        margin: 10px 0; 
-    }
+.dashboard-banner-description {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;  /* Troncamento su una riga */
+    align
+}
