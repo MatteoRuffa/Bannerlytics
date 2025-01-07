@@ -36,7 +36,7 @@ function post_banner_shortcode($atts) {
         while($query->have_posts()) {
             $query->the_post();
 
-            // Recupero i campi dal post_meta (invece che da get_field())
+            // Recupero i campi dal post_meta 
             $post_id                     = get_the_ID();
             $colore_sfondo               = get_post_meta($post_id, '_colore_sfondo', true);
             $tipologia_immagine_desktop  = get_post_meta($post_id, '_tipologia_immagine_desktop', true);
@@ -64,7 +64,7 @@ function post_banner_shortcode($atts) {
             }
 
             // Stessa concatenazione di stringhe di prima:
-            // (manteniamo il CSS inline, la gestione di "destra"/"sinistra" ecc.)
+            // (mantengo il CSS inline, la gestione di "destra"/"sinistra" ecc.)
             $string .= '<style>
             .banner-'. $post_id .' .button {
                 border: 1px solid '.esc_attr($colore_bordo_bottone).';
@@ -111,7 +111,7 @@ function post_banner_shortcode($atts) {
                 $string .= '<div class="width-40 first-m">';
             }
 
-            $string .= '<img src="'.esc_url($immagine).'" alt="" loading="lazy">';
+            $string .= '<img src="' . esc_url($immagine) . '" alt="Banner image" loading="lazy" style="max-width: 350px; height: auto; display: block; margin: 0 auto;">';
             $string .= '</div>'; // .width-40
             $string .= '</div>'; // .grid
             $string .= '</div>'; // .card-banner

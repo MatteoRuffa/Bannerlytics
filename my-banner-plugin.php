@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: My Banner Plugin
-Plugin URI: https://example.com
+Plugin URI: https://github.com/MatteoRuffa/M-M-banner-plugin
 Description: Plugin che registra un CPT "banner", shortcode per visualizzarlo e template dedicato.
 Version: 1.0
-Author: Il Tuo Nome
-Author URI: https://example.com
+Author: Matteo R
+Author URI: https://github.com/MatteoRuffa?tab=repositories
 License: GPL2
 */
 
@@ -28,3 +28,46 @@ function my_banner_single_template($single) {
     }
     return $single;
 }
+
+// Enqueue del CSS del plugin
+add_action('wp_enqueue_scripts', 'my_banner_plugin_enqueue_assets');
+function my_banner_plugin_enqueue_assets() {
+    $css_url = plugin_dir_url(__FILE__) . 'assets/css/style.css';
+    
+    // Enqueue del CSS
+    wp_enqueue_style(
+        'my-banner-plugin-styles', $css_url, array(), '1.0.0'                    
+    );
+}
+
+// Script metabox-preview (caricato solo quando si è nell'editor CPT banner)
+add_action('admin_enqueue_scripts', 'my_banner_admin_scripts');
+function my_banner_admin_scripts($hook_suffix) {
+    if ($hook_suffix !== 'post.php' && $hook_suffix !== 'post-new.php') {
+        return;
+    }
+
+    global $post;
+    if (!$post || $post->post_type !== 'banner') {
+        return;
+    }
+
+    // Carica la libreria media di WordPress
+    wp_enqueue_media();
+
+    // Carica lo script personalizzato
+    wp_enqueue_script(
+        'my-banner-preview',
+        plugin_dir_url(__FILE__) . 'assets/js/metabox-preview.js',
+        array('jquery'),
+        '1.0',
+        true
+    );
+
+    // Carica lo stile opzionale per una migliore presentazione
+    wp_enqueue_style(
+        'banner-metabox-style',
+        plugin_dir_url(__FILE__) . 'assets/css/banner-metabox-style.css'
+    );
+}
+
