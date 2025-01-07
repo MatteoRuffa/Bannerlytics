@@ -86,9 +86,14 @@ function webperformer_banner_metabox_callback($post) {
     // Immagine (URL)
     echo '<div style="flex:1;">';
     echo '<p><label><strong>Immagine (URL)</strong></label><br/>';
-    echo '<input type="text" name="immagine" value="'.esc_attr($immagine).'" placeholder="https://..." style="width:100%;" />';
+    echo '<input type="text" name="immagine" id="banner_image_url" value="' . esc_attr($immagine) . '" placeholder="https://..." style="width:100%;" />';
+    // Aggiungo un div per la preview
+    echo '<div style="margin-top:10px;">';
+    echo '<img id="banner_image_preview" src="' . esc_url($immagine) . '" alt="" style="max-width:100%; max-height:150px; display:' . ($immagine ? 'block' : 'none') . ';" />';
+    echo '</div>';
     echo '</p>';
     echo '</div>';
+
 
     // Titolo
     echo '<div style="flex:1;">';

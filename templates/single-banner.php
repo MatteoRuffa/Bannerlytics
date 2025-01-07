@@ -55,7 +55,7 @@ get_header();
             }
         </style>';
 
-        // Costruiamo l'HTML (identico alla versione con ACF, tranne le funzioni di recupero dati)
+        // Costruiamo l'HTML 
         $string .= '<article>';
         $string .= '<div class="section">';
         $string .= '<div class="banner banner-' . esc_attr($id) . '">
@@ -91,7 +91,7 @@ get_header();
             $string .= '<div class="width-40 first-m">';
         }
 
-        $string .= '<img src="' . esc_url($immagine) . '" alt="" loading="lazy">
+        $string .= '<img src="' . esc_url($immagine) . '" alt="" loading="lazy"  style="max-width: 350px; height: auto; display: block; margin: 0 auto;>
                     </div> 
                 </div> 
             </div> 
