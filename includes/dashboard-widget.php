@@ -19,7 +19,7 @@ function my_custom_dashboard_widget_display() {
     // Query per ottenere gli ultimi 3 banner pubblicati
     $args = array(
         'post_type'      => 'banner',
-        'posts_per_page' => 3,  
+        'posts_per_page' => 2,  
         'post_status'    => 'publish',
         'orderby'        => 'date',
         'order'          => 'DESC',
@@ -34,6 +34,7 @@ function my_custom_dashboard_widget_display() {
             $banner_id    = get_the_ID();
             $banner_title = get_the_title();
             $banner_img   = get_post_meta($banner_id, '_immagine', true);
+            $banner_link  = get_permalink($banner_id); 
             $banner_descr  = get_post_meta($banner_id, '_descrizione', true);
             $banner_descr  = wp_trim_words($banner_descr, 20, '...');
             $tipologia_img = get_post_meta($banner_id, '_tipologia_immagine_desktop', true);
@@ -45,12 +46,12 @@ function my_custom_dashboard_widget_display() {
                 echo '<img src="' . esc_url($banner_img) . '" alt="' . esc_attr($banner_title) . '" class="dashboard-banner-image">';
                 echo '</div>';
                 echo '<div class="dashboard-banner-text">';
-                echo '<h3 class="dashboard-banner-title">' . esc_html($banner_title) . '</h3>';
+                echo '<h3 class="dashboard-banner-title"><a class="dashboard-banner-title-link" href="' . esc_url($banner_link) . '" target="_blank">' . esc_html($banner_title) . '</a></h3>';
                 echo '<p class="dashboard-banner-description">' . esc_html($banner_descr) . '</p>';
                 echo '</div>';
             } else {
                 echo '<div class="dashboard-banner-text">';
-                echo '<h3 class="dashboard-banner-title">' . esc_html($banner_title) . '</h3>';
+                echo '<h3 class="dashboard-banner-title"><a class="dashboard-banner-title-link" href="' . esc_url($banner_link) . '" target="_blank" >' . esc_html($banner_title) . '</a></h3>';
                 echo '<p class="dashboard-banner-description">' . esc_html($banner_descr) . '</p>';
                 echo '</div>';
                 echo '<div class="dashboard-banner-image-wrapper">';

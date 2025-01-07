@@ -45,12 +45,19 @@
     margin-bottom: 10px;
 }
 
+.dashboard-banner-title-link {
+    text-decoration: none !important;
+}
+
+.dashboard-banner-title-link a:hover {
+    cursor: pointer;
+}
+
 .dashboard-banner-description {
     font-size: 14px;
     color: #666;
     line-height: 1.6;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;  /* Troncamento su una riga */
-    align
+    white-space: nowrap;  
 }
