@@ -1,0 +1,119 @@
+/* Stili personalizzati specifici per i Banner */
+
+/* Nascondi header e footer, se serve solo in questa pagina
+   (puoi eventualmente differenziare con body.single-banner se vuoi mirare
+   solo a quella tipologia) */
+   .single-banner .site-header, 
+   .single-banner footer {
+       display: none !important;
+   }
+   
+   .single-banner .section {
+       max-width: 960px;
+       padding: 0 !important;
+       margin-left: auto;
+       margin-right: auto;
+       box-sizing: border-box;
+   }
+   
+   .banner {
+       max-width: 960px;
+       box-shadow: 0px 0px 4px 1px rgb(0 0 0 / 10%);
+       border-radius: 5px;
+       margin: 100px 0;
+       overflow: hidden;
+   }
+   
+   .card-banner {
+       padding: 20px 40px;
+       position: relative;
+   }
+   
+   .grid {
+       display: flex;
+       flex-wrap: wrap;
+       margin: 0;
+       padding: 0;
+       list-style: none;
+       align-items: center;
+       justify-content: space-between;
+   }
+   
+   .width-60, .width-40 {
+       width: 100%;
+   }
+   
+   .title-banner p {
+       font-family: 'Poppins', Arial, serif!important;
+       font-weight: 700;
+       margin-bottom: 10px;
+       margin-top: 40px;
+   }
+   
+   .margin-medium-bottom {
+       margin-bottom: 40px;
+   }
+   
+   .banner .button {
+       padding: 10px 20px;
+       border-radius: 100px;
+       line-height: 1.85714285714286;
+       border: 0;
+       text-decoration: none !important;
+   }
+   
+   .banner .button:hover {
+       filter: brightness(80%);
+   }
+   
+   .banner img {
+       bottom: 0 !important;
+   }
+   
+   .first {
+       order: -1;
+   }
+   
+   .position-relative {
+       position: relative !important;
+   }
+   
+   .text-center {
+       text-align: center;
+   }
+   
+   @media (max-width: 640px) {
+       .margin-medium-bottom {
+           margin-left: 20px;
+           margin-right: 20px;
+       }
+   }
+   
+   @media (max-width: 960px) {
+       .card-banner {
+           padding: 20px 20px;
+       }
+   }
+   
+   @media (min-width: 960px) {
+       .width-60 {
+           width: 58%;
+       }
+       .width-40 {
+           width: 38%;
+       }
+       .first-m {
+           order: -1;
+       }
+       .last-m {
+           order: 99;
+           text-align: center;
+       }
+       .text-left-m {
+           text-align: left;
+       }
+       .text-right-m {
+           text-align: right;
+       }
+   }
+   
