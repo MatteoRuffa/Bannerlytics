@@ -18,6 +18,7 @@ require_once plugin_dir_path(__FILE__) . 'includes/cpt-banner.php';
 require_once plugin_dir_path(__FILE__) . 'includes/metabox-banner.php';
 require_once plugin_dir_path(__FILE__) . 'includes/shortcode-banner.php';
 require_once plugin_dir_path(__FILE__) . 'includes/admin-columns.php';
+require_once plugin_dir_path(__FILE__) . 'includes/dashboard-widget.php';
 
 // Carico automaticamente il template single-banner.php:
 add_filter('single_template', 'my_banner_single_template');

@@ -105,6 +105,9 @@
         margin: 0 auto;
         border-radius: 8px;
     }
+
+   
+
     
    @media (max-width: 640px) {
        .margin-medium-bottom {
