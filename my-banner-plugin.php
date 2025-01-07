@@ -32,7 +32,6 @@ function my_banner_single_template($single) {
 // 1. Enqueue del CSS del plugin
 add_action('wp_enqueue_scripts', 'my_banner_plugin_enqueue_assets');
 function my_banner_plugin_enqueue_assets() {
-    // Definisci il percorso al file CSS
     $css_url = plugin_dir_url(__FILE__) . 'assets/css/style.css';
     
     // Enqueue del CSS

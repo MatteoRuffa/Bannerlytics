@@ -43,108 +43,167 @@ function webperformer_banner_metabox_callback($post) {
 
     // Stampiamo i campi in HTML
     echo '<div style="margin:0 0 20px;">';
-    
+
+    /*
+     * Ogni "riga" avrà un container con "display: flex;" e "gap: 20px;"
+     * Tre campi (ognuno racchiuso in un <div style="flex:1;">) per riga
+     */
+
+    // -------------------- RIGA 1 --------------------
+    echo '<div style="display:flex; gap:20px;">';
     // Colore sfondo
+    echo '<div style="flex:1;">';
     echo '<p><label><strong>Colore Sfondo</strong></label><br/>';
-    echo '<input type="text" name="colore_sfondo" value="'.esc_attr($colore_sfondo).'" placeholder="#FFFFFF" style="width:100%;max-width:400px;" />';
+    echo '<input type="text" name="colore_sfondo" value="'.esc_attr($colore_sfondo).'" placeholder="#FFFFFF" style="width:100%;" />';
     echo '</p>';
+    echo '</div>';
 
     // Tipologia immagine desktop
+    echo '<div style="flex:1;">';
     echo '<p><label><strong>Tipologia Immagine Desktop</strong></label><br/>';
-    echo '<select name="tipologia_immagine_desktop" style="min-width:200px;">';
+    echo '<select name="tipologia_immagine_desktop" style="width:100%;">';
     echo '  <option value="">-- Seleziona --</option>';
     echo '  <option value="destra" '.selected($tipologia_immagine_desktop, 'destra', false).'>Destra</option>';
     echo '  <option value="sinistra" '.selected($tipologia_immagine_desktop, 'sinistra', false).'>Sinistra</option>';
     echo '</select>';
     echo '</p>';
+    echo '</div>';
 
     // Tipologia immagine mobile
+    echo '<div style="flex:1;">';
     echo '<p><label><strong>Tipologia Immagine Mobile</strong></label><br/>';
-    echo '<select name="tipologia_immagine_mobile" style="min-width:200px;">';
+    echo '<select name="tipologia_immagine_mobile" style="width:100%;">';
     echo '  <option value="">-- Seleziona --</option>';
     echo '  <option value="destra" '.selected($tipologia_immagine_mobile, 'destra', false).'>Destra</option>';
     echo '  <option value="sinistra" '.selected($tipologia_immagine_mobile, 'sinistra', false).'>Sinistra</option>';
     echo '</select>';
     echo '</p>';
+    echo '</div>';
+    echo '</div>'; // fine riga 1
 
+    // -------------------- RIGA 2 --------------------
+    echo '<div style="display:flex; gap:20px; margin-top:20px;">';
     // Immagine (URL)
+    echo '<div style="flex:1;">';
     echo '<p><label><strong>Immagine (URL)</strong></label><br/>';
-    echo '<input type="text" name="immagine" value="'.esc_attr($immagine).'" placeholder="https://..." style="width:100%;max-width:400px;" />';
+    echo '<input type="text" name="immagine" value="'.esc_attr($immagine).'" placeholder="https://..." style="width:100%;" />';
     echo '</p>';
+    echo '</div>';
 
     // Titolo
+    echo '<div style="flex:1;">';
     echo '<p><label><strong>Titolo</strong></label><br/>';
-    echo '<input type="text" name="titolo" value="'.esc_attr($titolo).'" style="width:100%;max-width:400px;" />';
+    echo '<input type="text" name="titolo" value="'.esc_attr($titolo).'" style="width:100%;" />';
     echo '</p>';
+    echo '</div>';
 
     // Colore titolo
+    echo '<div style="flex:1;">';
     echo '<p><label><strong>Colore Titolo</strong></label><br/>';
-    echo '<input type="text" name="colore_titolo" value="'.esc_attr($colore_titolo).'" placeholder="#000000" style="width:100%;max-width:400px;" />';
+    echo '<input type="text" name="colore_titolo" value="'.esc_attr($colore_titolo).'" placeholder="#000000" style="width:100%;" />';
     echo '</p>';
+    echo '</div>';
+    echo '</div>'; // fine riga 2
 
-    // Descrizione (campo più ampio, es. textarea)
+    // -------------------- RIGA 3 --------------------
+    echo '<div style="display:flex; gap:20px; margin-top:20px;">';
+    // Descrizione
+    echo '<div style="flex:1;">';
     echo '<p><label><strong>Descrizione</strong></label><br/>';
-    echo '<textarea name="descrizione" rows="4" style="width:100%;max-width:400px;">'.esc_textarea($descrizione).'</textarea>';
+    echo '<textarea name="descrizione" rows="4" style="width:100%;">'.esc_textarea($descrizione).'</textarea>';
     echo '</p>';
+    echo '</div>';
 
     // Colore descrizione
+    echo '<div style="flex:1;">';
     echo '<p><label><strong>Colore Descrizione</strong></label><br/>';
-    echo '<input type="text" name="colore_descrizione" value="'.esc_attr($colore_descrizione).'" placeholder="#000000" style="width:100%;max-width:400px;" />';
+    echo '<input type="text" name="colore_descrizione" value="'.esc_attr($colore_descrizione).'" placeholder="#000000" style="width:100%;" />';
     echo '</p>';
+    echo '</div>';
 
     // Testo bottone
+    echo '<div style="flex:1;">';
     echo '<p><label><strong>Testo Bottone</strong></label><br/>';
-    echo '<input type="text" name="testo_bottone" value="'.esc_attr($testo_bottone).'" style="width:100%;max-width:400px;" />';
+    echo '<input type="text" name="testo_bottone" value="'.esc_attr($testo_bottone).'" style="width:100%;" />';
     echo '</p>';
+    echo '</div>';
+    echo '</div>'; // fine riga 3
 
+    // -------------------- RIGA 4 --------------------
+    echo '<div style="display:flex; gap:20px; margin-top:20px;">';
     // Link bottone
+    echo '<div style="flex:1;">';
     echo '<p><label><strong>Link Bottone</strong></label><br/>';
-    echo '<input type="url" name="link_bottone" value="'.esc_attr($link_bottone).'" placeholder="https://..." style="width:100%;max-width:400px;" />';
+    echo '<input type="url" name="link_bottone" value="'.esc_attr($link_bottone).'" placeholder="https://..." style="width:100%;" />';
     echo '</p>';
+    echo '</div>';
 
     // Colore bottone
+    echo '<div style="flex:1;">';
     echo '<p><label><strong>Colore Bottone</strong></label><br/>';
-    echo '<input type="text" name="colore_bottone" value="'.esc_attr($colore_bottone).'" placeholder="#FFFFFF" style="width:100%;max-width:400px;" />';
+    echo '<input type="text" name="colore_bottone" value="'.esc_attr($colore_bottone).'" placeholder="#FFFFFF" style="width:100%;" />';
     echo '</p>';
+    echo '</div>';
 
     // Colore testo bottone
+    echo '<div style="flex:1;">';
     echo '<p><label><strong>Colore Testo Bottone</strong></label><br/>';
-    echo '<input type="text" name="colore_testo_bottone" value="'.esc_attr($colore_testo_bottone).'" placeholder="#000000" style="width:100%;max-width:400px;" />';
+    echo '<input type="text" name="colore_testo_bottone" value="'.esc_attr($colore_testo_bottone).'" placeholder="#000000" style="width:100%;" />';
     echo '</p>';
+    echo '</div>';
+    echo '</div>'; // fine riga 4
 
-    // Apertura link (select)
+    // -------------------- RIGA 5 --------------------
+    echo '<div style="display:flex; gap:20px; margin-top:20px;">';
+    // Apertura link
+    echo '<div style="flex:1;">';
     echo '<p><label><strong>Apertura Link</strong></label><br/>';
-    echo '<select name="apertura_link" style="min-width:200px;">';
+    echo '<select name="apertura_link" style="width:100%;">';
     echo '  <option value="">-- Seleziona --</option>';
     echo '  <option value="stessa finestra" '.selected($apertura_link, 'stessa finestra', false).'>Stessa finestra</option>';
     echo '  <option value="nuova finestra" '.selected($apertura_link, 'nuova finestra', false).'>Nuova finestra</option>';
     echo '</select>';
     echo '</p>';
+    echo '</div>';
 
     // Colore bordo bottone
+    echo '<div style="flex:1;">';
     echo '<p><label><strong>Colore Bordo Bottone</strong></label><br/>';
-    echo '<input type="text" name="colore_bordo_bottone" value="'.esc_attr($colore_bordo_bottone).'" placeholder="#000000" style="width:100%;max-width:400px;" />';
+    echo '<input type="text" name="colore_bordo_bottone" value="'.esc_attr($colore_bordo_bottone).'" placeholder="#000000" style="width:100%;" />';
     echo '</p>';
+    echo '</div>';
 
     // Border radius bottone
+    echo '<div style="flex:1;">';
     echo '<p><label><strong>Border Radius Bottone</strong></label><br/>';
-    echo '<input type="text" name="border_radius_bottone" value="'.esc_attr($border_radius_bottone).'" placeholder="5px / 50% / etc." style="width:100%;max-width:400px;" />';
+    echo '<input type="text" name="border_radius_bottone" value="'.esc_attr($border_radius_bottone).'" placeholder="5px / 50% / etc." style="width:100%;" />';
     echo '</p>';
+    echo '</div>';
+    echo '</div>'; // fine riga 5
 
+    // -------------------- RIGA 6 --------------------
+    echo '<div style="display:flex; gap:20px; margin-top:20px;">';
     // Colore hover BG bottone
+    echo '<div style="flex:1;">';
     echo '<p><label><strong>Colore Hover BG Bottone</strong></label><br/>';
-    echo '<input type="text" name="colore_hover_bg_bottone" value="'.esc_attr($colore_hover_bg_bottone).'" placeholder="#CCCCCC" style="width:100%;max-width:400px;" />';
+    echo '<input type="text" name="colore_hover_bg_bottone" value="'.esc_attr($colore_hover_bg_bottone).'" placeholder="#CCCCCC" style="width:100%;" />';
     echo '</p>';
+    echo '</div>';
 
     // Colore hover testo bottone
+    echo '<div style="flex:1;">';
     echo '<p><label><strong>Colore Hover Testo Bottone</strong></label><br/>';
-    echo '<input type="text" name="colore_hover_testo_bottone" value="'.esc_attr($colore_hover_testo_bottone).'" placeholder="#000000" style="width:100%;max-width:400px;" />';
+    echo '<input type="text" name="colore_hover_testo_bottone" value="'.esc_attr($colore_hover_testo_bottone).'" placeholder="#000000" style="width:100%;" />';
     echo '</p>';
+    echo '</div>';
 
     // Colore hover bordo bottone
+    echo '<div style="flex:1;">';
     echo '<p><label><strong>Colore Hover Bordo Bottone</strong></label><br/>';
-    echo '<input type="text" name="colore_hover_bordo_bottone" value="'.esc_attr($colore_hover_bordo_bottone).'" placeholder="#000000" style="width:100%;max-width:400px;" />';
+    echo '<input type="text" name="colore_hover_bordo_bottone" value="'.esc_attr($colore_hover_bordo_bottone).'" placeholder="#000000" style="width:100%;" />';
     echo '</p>';
+    echo '</div>';
+    echo '</div>'; // fine riga 6
 
     echo '</div><!-- /.banner-fields-container -->';
 }
