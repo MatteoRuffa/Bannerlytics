@@ -41,7 +41,7 @@ function my_banner_plugin_enqueue_assets() {
     );
 }
 
-// Script metabox-preview (caricato solo quando si è nell'editor CPT banner)
+// Scripts vari e script
 add_action('admin_enqueue_scripts', 'my_banner_admin_scripts');
 function my_banner_admin_scripts($hook_suffix) {
     if ($hook_suffix !== 'post.php' && $hook_suffix !== 'post-new.php') {
@@ -53,10 +53,10 @@ function my_banner_admin_scripts($hook_suffix) {
         return;
     }
 
-    // Carica la libreria media di WordPress
+    // Libreria media di WordPress
     wp_enqueue_media();
 
-    // Carica lo script personalizzato
+    // Script metabox-preview (caricato solo quando si è nell'editor CPT banner)
     wp_enqueue_script(
         'M-M-banner-preview',
         plugin_dir_url(__FILE__) . 'assets/js/metabox-preview.js',
@@ -66,9 +66,18 @@ function my_banner_admin_scripts($hook_suffix) {
     );
 
     // Carica lo stile opzionale per una migliore presentazione
-    wp_enqueue_style(
-        'banner-metabox-style',
-        plugin_dir_url(__FILE__) . 'assets/css/banner-metabox-style.css'
+    // wp_enqueue_style(
+    //     'banner-metabox-style',
+    //     plugin_dir_url(__FILE__) . 'assets/css/banner-metabox-style.css'
+    // );
+
+    // Script degli slider
+    wp_enqueue_script(
+        'slider-controls',
+        plugin_dir_url(__FILE__) . 'assets/js/slider-controls.js',
+        array('jquery'),
+        '1.0',
+        true
     );
 }
 
