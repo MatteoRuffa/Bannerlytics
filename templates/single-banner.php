@@ -33,6 +33,9 @@ get_header();
         $colore_hover_testo_bottone = get_post_meta($id, '_colore_hover_testo_bottone', true);
         $colore_hover_bordo_bottone = get_post_meta($id, '_colore_hover_bordo_bottone', true);
 
+        //campo aggiuntivo gestione width
+        $larghezza_banner           = get_post_meta($id, '_larghezza_banner', true) ?: 960;
+
         // Se l'utente sceglie "nuova finestra"
         $target = ($apertura_link === 'nuova finestra') ? "target='__blank'" : '';
 
@@ -55,7 +58,8 @@ get_header();
         // l'HTML 
         $string .= '<article>';
         $string .= '<div class="section">';
-        $string .= '<div class="banner banner-' . esc_attr($id) . '">
+        $string .= '<div class="banner banner-' . esc_attr($id) . '" style=" width:' . esc_attr($larghezza_banner) . 'px;">
+
                         <div class="card-banner" style="background:' . esc_attr($colore_sfondo) . ';">
                             <div class="grid">
                                 <div class="width-60">

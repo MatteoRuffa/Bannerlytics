@@ -215,7 +215,19 @@ function webperformer_banner_metabox_callback($post) {
     echo '</div>'; // fine riga 6
 
     echo '</div><!-- /.banner-fields-container -->';
-}
+
+    // -------------------- RIGA 7 --------------------
+    echo '<div style="display:flex; gap:20px; margin-top:20px;">';
+    // Slider per la larghezza del banner
+    echo '<div style="flex: 1; display: flex; flex-direction: column; align-items: center;">';
+    echo '<p style="width: 50%; text-align: center;"><label><strong>Larghezza Banner</strong></label></p>';
+    echo '<input type="range" name="larghezza_banner" min="350" max="1200" value="' . (esc_attr(get_post_meta($post->ID, '_larghezza_banner', true) ?: 960)) . '" style="width: 50vw; height: 8px;" oninput="document.getElementById(\'banner-width-output\').textContent = this.value + \'px\';" />';
+    echo '<span id="banner-width-output" style="font-size: 16px; margin-top: 10px;">' . esc_html(get_post_meta($post->ID, '_larghezza_banner', true) ?: 960) . 'px</span>';
+    echo '</div>';
+    echo '</div>'; // Fine riga 7
+
+
+    }
 
 // 3. Salvataggio dei campi
 add_action('save_post_banner', 'webperformer_save_banner_meta');
@@ -289,4 +301,8 @@ function webperformer_save_banner_meta($post_id) {
     if (isset($_POST['colore_hover_bordo_bottone'])) {
         update_post_meta($post_id, '_colore_hover_bordo_bottone', sanitize_text_field($_POST['colore_hover_bordo_bottone']));
     }
+    if (isset($_POST['larghezza_banner'])) {
+        update_post_meta($post_id, '_larghezza_banner', intval($_POST['larghezza_banner']));
+    }
+    
 }

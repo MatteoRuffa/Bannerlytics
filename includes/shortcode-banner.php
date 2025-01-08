@@ -56,6 +56,7 @@ function post_banner_shortcode($atts) {
             $colore_hover_bg_bottone     = get_post_meta($post_id, '_colore_hover_bg_bottone', true);
             $colore_hover_testo_bottone  = get_post_meta($post_id, '_colore_hover_testo_bottone', true);
             $colore_hover_bordo_bottone  = get_post_meta($post_id, '_colore_hover_bordo_bottone', true);
+            $larghezza_banner            = get_post_meta($post_id, '_larghezza_banner', true) ?: 960; // Default 960px
 
             // Imposta il target del link (nuova finestra / stessa finestra)
             $target = '';
@@ -78,7 +79,7 @@ function post_banner_shortcode($atts) {
             </style>';
 
             // Costruisco il markup HTML del banner
-            $string .= '<div class="banner banner-'. $post_id .'" style="background:'.esc_attr($colore_sfondo).';">
+            $string .= '<div class="banner banner-' . $post_id . '" style="background:' . esc_attr($colore_sfondo) . '; width:' . esc_attr($larghezza_banner) . 'px; margin: 0 auto;">
                 <div class="card-banner">
                     <div class="grid">
                         <div class="width-60">
