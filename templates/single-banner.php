@@ -39,7 +39,7 @@ get_header();
         // Inizializzo una variabile per costruire il markup
         $string = '';
 
-        // Qui mettiamo SOLO gli stili dinamici, legati ai valori caricati da post_meta
+        //Stili dinamici, legati ai valori caricati da post_meta
         $string .= '<style>
             .banner-' . $id . ' .button {
                 border: 1px solid ' . esc_attr($colore_bordo_bottone) . ';
@@ -84,6 +84,7 @@ get_header();
             $string .= '<div class="width-40 first last-m">';
         } elseif ($tipologia_immagine_desktop === 'sinistra' && $tipologia_immagine_mobile === 'sinistra') {
             $string .= '<div class="width-40 first">';
+            
         } elseif ($tipologia_immagine_desktop === 'sinistra' && $tipologia_immagine_mobile === 'destra') {
             $string .= '<div class="width-40 first-m">';
         }

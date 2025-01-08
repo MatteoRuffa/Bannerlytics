@@ -32,21 +32,18 @@ function my_banner_single_template($single) {
 
 
 // Enqueue del CSS del plugin
-add_action('wp_enqueue_scripts', 'my_banner_plugin_enqueue_assets', 20); 
+add_action('wp_enqueue_scripts', 'my_banner_plugin_enqueue_assets', 999); 
 function my_banner_plugin_enqueue_assets() {
     $css_url = plugin_dir_url(__FILE__) . 'assets/css/style.css';
     
-     // Enqueue del CSS
+    // Enqueue del CSS
     wp_enqueue_style(
-        'M-M-banner-plugin-styles', 
-        $css_url,                   
-        array('astra-child-theme-css'),       
-        '1.0.0'                     
+        'M-M-banner-plugin-styles', $css_url, array(), '1.0.0'                    
     );
-
 }
 
-// Scripts vari e script
+
+// Script metabox-preview (caricato solo quando si è nell'editor CPT banner)
 add_action('admin_enqueue_scripts', 'my_banner_admin_scripts');
 function my_banner_admin_scripts($hook_suffix) {
     if ($hook_suffix !== 'post.php' && $hook_suffix !== 'post-new.php') {
@@ -58,10 +55,10 @@ function my_banner_admin_scripts($hook_suffix) {
         return;
     }
 
-    // Libreria media di WordPress
+    // Carica la libreria media di WordPress
     wp_enqueue_media();
 
-    // Script metabox-preview (caricato solo quando si è nell'editor CPT banner)
+    // Carica lo script personalizzato
     wp_enqueue_script(
         'M-M-banner-preview',
         plugin_dir_url(__FILE__) . 'assets/js/metabox-preview.js',
@@ -71,18 +68,9 @@ function my_banner_admin_scripts($hook_suffix) {
     );
 
     // Carica lo stile opzionale per una migliore presentazione
-    // wp_enqueue_style(
-    //     'banner-metabox-style',
-    //     plugin_dir_url(__FILE__) . 'assets/css/banner-metabox-style.css'
-    // );
-
-    // Script degli slider
-    wp_enqueue_script(
-        'slider-controls',
-        plugin_dir_url(__FILE__) . 'assets/js/slider-controls.js',
-        array('jquery'),
-        '1.0',
-        true
+    wp_enqueue_style(
+        'banner-metabox-style',
+        plugin_dir_url(__FILE__) . 'assets/css/banner-metabox-style.css'
     );
 }
 

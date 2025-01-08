@@ -1,15 +1,19 @@
 /* Stili personalizzati specifici per i Banner */
 
+/* Nascondi header e footer, se serve solo in questa pagina
+   (puoi eventualmente differenziare con body.single-banner se vuoi mirare
+   solo a quella tipologia) */
    .single-banner .site-header, 
    .single-banner footer {
        display: none !important;
    }
    
+   .single-banner {
+    margin: 100px auto !important;
+    width: 960px !important;
+   }
    .single-banner .section {
-       max-width: 960px;
        padding: 0 !important;
-       margin-left: auto ;
-       margin-right: auto ;
        box-sizing: border-box;
    }
    
@@ -41,7 +45,7 @@
    }
    
    .title-banner p {
-       /* font-family: 'Poppins', Arial, serif!important; */
+       font-family: 'Poppins', Arial, serif!important;
        font-weight: 700;
        margin-bottom: 10px;
        margin-top: 40px;
@@ -102,8 +106,6 @@
         margin: 0 auto;
         border-radius: 8px;
     }
-
-
     
    @media (max-width: 640px) {
        .margin-medium-bottom {
