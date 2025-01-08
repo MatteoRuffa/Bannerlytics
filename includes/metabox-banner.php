@@ -18,6 +18,7 @@ function webperformer_add_banner_metabox() {
 
 // 2. Callback: stampa i campi HTML
 function webperformer_banner_metabox_callback($post) {
+
     // Nonce per sicurezza
     wp_nonce_field('webperformer_save_banner_meta', 'webperformer_banner_nonce');
 
@@ -40,6 +41,8 @@ function webperformer_banner_metabox_callback($post) {
     $colore_hover_bg_bottone     = get_post_meta($post->ID, '_colore_hover_bg_bottone', true);
     $colore_hover_testo_bottone  = get_post_meta($post->ID, '_colore_hover_testo_bottone', true);
     $colore_hover_bordo_bottone  = get_post_meta($post->ID, '_colore_hover_bordo_bottone', true);
+    $container_width  = get_post_meta($post->ID, '_container_width', true) ?: '100';  
+    $container_height = get_post_meta($post->ID, '_container_height', true) ?: '160'; 
 
     // Stampiamo i campi in HTML
     echo '<div style="margin:0 0 20px;">';
@@ -214,6 +217,27 @@ function webperformer_banner_metabox_callback($post) {
     echo '</div>';
     echo '</div>'; // fine riga 6
 
+    // -------------------- RIGA 7 --------------------
+    echo '<div style="display: flex; gap: 20px; margin-top: 20px;">';
+
+    // Slider larghezza contenitore
+    echo '<div style="flex: 1;">';
+    echo '<p><label><strong>Larghezza Contenitore (%)</strong></label><br/>';
+    echo '<input type="range" id="container_width_slider" name="container_width" value="' . esc_attr($container_width) . '" min="10" max="100" style="width: 100%;">';
+    echo '<span id="width_value" style="display: block; text-align: center;">' . esc_attr($container_width) . '%</span>';
+    echo '</p>';
+    echo '</div>';
+
+    // Slider altezza contenitore
+    echo '<div style="flex: 1;">';
+    echo '<p><label><strong>Altezza Contenitore (px)</strong></label><br/>';
+    echo '<input type="range" id="container_height_slider" name="container_height" value="' . esc_attr($container_height) . '" min="100" max="500" style="width: 100%;">';
+    echo '<span id="height_value" style="display: block; text-align: center;">' . esc_attr($container_height) . 'px</span>';
+    echo '</p>';
+    echo '</div>';
+
+    echo '</div>'; // Fine riga 7
+
     echo '</div><!-- /.banner-fields-container -->';
 }
 
@@ -288,5 +312,11 @@ function webperformer_save_banner_meta($post_id) {
     }
     if (isset($_POST['colore_hover_bordo_bottone'])) {
         update_post_meta($post_id, '_colore_hover_bordo_bottone', sanitize_text_field($_POST['colore_hover_bordo_bottone']));
+    }
+    if (isset($_POST['container_width'])) {
+        update_post_meta($post_id, '_container_width', intval($_POST['container_width']));
+    }
+    if (isset($_POST['container_height'])) {
+        update_post_meta($post_id, '_container_height', intval($_POST['container_height']));
     }
 }
