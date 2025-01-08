@@ -43,7 +43,7 @@ function webperformer_banner_metabox_callback($post) {
 
     // Stampiamo i campi in HTML
     echo '<div style="margin:0 0 20px;">';
-
+    
     /*
      * Ogni "riga" avrà un container con "display: flex;" e "gap: 20px;"
      * Tre campi (ognuno racchiuso in un <div style="flex:1;">) per riga

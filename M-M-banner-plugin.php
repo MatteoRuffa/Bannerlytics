@@ -31,15 +31,19 @@ function my_banner_single_template($single) {
 }
 
 // Enqueue del CSS del plugin
-add_action('wp_enqueue_scripts', 'my_banner_plugin_enqueue_assets');
+add_action('wp_enqueue_scripts', 'my_banner_plugin_enqueue_assets', 999); 
 function my_banner_plugin_enqueue_assets() {
     $css_url = plugin_dir_url(__FILE__) . 'assets/css/style.css';
     
     // Enqueue del CSS
     wp_enqueue_style(
-        'M-M-banner-plugin-styles', $css_url, array(), '1.0.0'                    
+        'M-M-banner-plugin-styles', 
+        $css_url,                   
+        array('theme-style'),       
+        '1.0.0'                      
     );
 }
+
 
 // Script metabox-preview (caricato solo quando si è nell'editor CPT banner)
 add_action('admin_enqueue_scripts', 'my_banner_admin_scripts');

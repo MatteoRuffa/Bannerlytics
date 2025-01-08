@@ -1,8 +1,7 @@
 <?php
 /*
  * Template per visualizzare un singolo Banner
- * (Stessa struttura di prima, ma adesso usiamo get_post_meta().
- * Se il plugin intercetta single_template, userà questo file.)
+ * Se il plugin intercetta single_template, userà questo file.
  */
 
 get_header(); 
@@ -13,8 +12,6 @@ get_header();
 
         // Recupero l'ID del post
         $id = get_the_ID();
-        
-        // Invece di get_field(...), usiamo get_post_meta(...,'_nome_campo', true)
         $colore_sfondo               = get_post_meta($id, '_colore_sfondo', true);
         $tipologia_immagine_desktop  = get_post_meta($id, '_tipologia_immagine_desktop', true);
         $tipologia_immagine_mobile   = get_post_meta($id, '_tipologia_immagine_mobile', true);
@@ -55,7 +52,7 @@ get_header();
             }
         </style>';
 
-        // Costruiamo l'HTML 
+        // l'HTML 
         $string .= '<article>';
         $string .= '<div class="section">';
         $string .= '<div class="banner banner-' . esc_attr($id) . '">
