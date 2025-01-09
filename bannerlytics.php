@@ -15,9 +15,8 @@ if ( ! defined('ABSPATH') ) {
 
 // Includo i file con le funzionalità
 require_once plugin_dir_path(__FILE__) . 'includes/cpt-banner.php';
-require_once plugin_dir_path(__FILE__) . 'includes/metabox-banner.php';
 require_once plugin_dir_path(__FILE__) . 'includes/shortcode-banner.php';
-require_once plugin_dir_path(__FILE__) . 'includes/admin-columns.php';
+// require_once plugin_dir_path(__FILE__) . 'includes/admin-columns.php';
 require_once plugin_dir_path(__FILE__) . 'includes/dashboard-widget.php';
 require_once plugin_dir_path(__FILE__) . 'admin/menu.php';
 
