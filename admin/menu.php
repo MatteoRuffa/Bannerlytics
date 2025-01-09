@@ -29,11 +29,11 @@ function bannerlytics_register_admin_menu() {
         'bannerlytics_dashboard_page'
     );
 
-    // Sotto-pagina: Tutti i Banner
+    // Sotto-pagina: Gestione Banner
     add_submenu_page(
         'bannerlytics-dashboard',
-        'Tutti i Banner',
-        'Tutti i Banner',
+        'Gestione Banner',
+        'Gestione Banner',
         'manage_options',
         'bannerlytics-gestione-banner',
         'bannerlytics_gestione_banner_page'

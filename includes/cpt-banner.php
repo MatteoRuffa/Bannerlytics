@@ -20,8 +20,8 @@ function webperformer_custom_banner(){
     $args = array(
         'labels'             => $labels,
         'public'             => true,
-        'show_ui'            => false,
-        'show_in_menu'       => false,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
         'show_in_nav_menus'  => true,
         'has_archive'        => false,
         'publicly_queryable' => true,

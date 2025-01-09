@@ -1,16 +1,17 @@
 <?php
 if (!defined('ABSPATH')) {
-    exit; 
+    exit;
 }
 
 function bannerlytics_editor_banner_page() {
-    // 1. Se il form è stato inviato in POST, gestisco salvataggio/aggiornamento
+    ob_start();
+    // 1. Se il form è stato inviato in POST, gestiamo salvataggio/aggiornamento
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         check_admin_referer('bannerlytics_editor_nonce_action', 'bannerlytics_editor_nonce');
 
         $banner_id = isset($_POST['banner_id']) ? intval($_POST['banner_id']) : 0;
 
-        // Recupero e "pulisco" tutti i campi
+        // Recupera e “pulisci” tutti i campi
         $colore_sfondo               = sanitize_text_field($_POST['colore_sfondo'] ?? '');
         $tipologia_immagine_desktop  = sanitize_text_field($_POST['tipologia_immagine_desktop'] ?? '');
         $tipologia_immagine_mobile   = sanitize_text_field($_POST['tipologia_immagine_mobile'] ?? '');
@@ -34,13 +35,13 @@ function bannerlytics_editor_banner_page() {
         $box_shadow_banner           = sanitize_text_field($_POST['box_shadow_banner'] ?? '0px 0px 4px 1px rgba(0, 0, 0, 0.1)');
 
         if ($banner_id > 0) {
-            // Aggiorno il post esistente
+            // Aggiorniamo il post esistente
             wp_update_post(array(
                 'ID'         => $banner_id,
-                'post_title' => $titolo,
+                'post_title' => $titolo, // puoi decidere se far coincidere il "title" con $titolo
             ));
         } else {
-            // Creo un nuovo post di tipo 'banner'
+            // Creiamo un nuovo post di tipo 'banner'
             $banner_id = wp_insert_post(array(
                 'post_type'   => 'banner',
                 'post_title'  => $titolo,
@@ -48,7 +49,7 @@ function bannerlytics_editor_banner_page() {
             ));
         }
 
-        // Salvo i meta
+        // Salviamo i meta
         update_post_meta($banner_id, '_colore_sfondo',               $colore_sfondo);
         update_post_meta($banner_id, '_tipologia_immagine_desktop',  $tipologia_immagine_desktop);
         update_post_meta($banner_id, '_tipologia_immagine_mobile',   $tipologia_immagine_mobile);
@@ -71,16 +72,17 @@ function bannerlytics_editor_banner_page() {
         update_post_meta($banner_id, '_border_radius_banner',        $border_radius_banner);
         update_post_meta($banner_id, '_box_shadow_banner',           $box_shadow_banner);
 
+        ob_end_clean();
         // Redirect per non reinviare i dati con il refresh
-        wp_safe_redirect(add_query_arg(array(
+        wp_redirect(add_query_arg(array(
             'page'      => 'bannerlytics-editor-banner',
             'banner_id' => $banner_id,
             'updated'   => 'true'
         ), admin_url('admin.php')));
-        exit;  
+        exit;
     }
 
-    // 2. Carico i valori solo dopo il salvataggio e se esiste un ID banner
+    // 2. Carichiamo i valori se c’è un banner_id in GET (modifica esistente)
     $banner_id = isset($_GET['banner_id']) ? intval($_GET['banner_id']) : 0;
 
     $colore_sfondo               = '';
@@ -128,9 +130,10 @@ function bannerlytics_editor_banner_page() {
         $larghezza_banner            = get_post_meta($banner_id, '_larghezza_banner', true) ?: 960;
         $border_radius_banner        = get_post_meta($banner_id, '_border_radius_banner', true) ?: '5px';
         $box_shadow_banner           = get_post_meta($banner_id, '_box_shadow_banner', true) ?: '0px 0px 4px 1px rgba(0, 0, 0, 0.1)';
+        
     }
 
-    // 3. Stampo la UI
+    // 3. Stampiamo la UI (simile a metabox-banner.php, ma in una pagina custom)
     ?>
     <div class="wrap">
         <h1>
@@ -326,19 +329,16 @@ function bannerlytics_editor_banner_page() {
         </form>
     </div>
     <?php
+    ob_end_flush();
 }
 
-
-// Aggancio uno script SOLO se siamo nella pagina “Editor Banner”
 add_action('admin_enqueue_scripts', 'bannerlytics_editor_enqueue_scripts');
 function bannerlytics_editor_enqueue_scripts($hook_suffix) {
-    // Controllo che la pagina corrente sia la “Editor Banner”
+    // Controlliamo che siamo nella pagina giusta
     if (isset($_GET['page']) && $_GET['page'] === 'bannerlytics-editor-banner') {
-        // Carico la media library di WP (necessaria per “Seleziona immagine”)
+        // Carica la libreria media di WP
         wp_enqueue_media();
-        
-        // Carico lo script personalizzato
-        // e la cartella assets è “plugin-root/assets/”, allora:
+        // Carica lo script personalizzato (se vuoi riusare "metabox-preview.js", ok)
         wp_enqueue_script(
             'bannerlytics-preview',
             plugin_dir_url(__FILE__) . '../assets/js/metabox-preview.js',
@@ -346,5 +346,10 @@ function bannerlytics_editor_enqueue_scripts($hook_suffix) {
             '1.0',
             true
         );
+        // Carica lo stile personalizzato, se serve
+        wp_enqueue_style(
+            'banner-metabox-style',
+            plugin_dir_url(__FILE__) . '../assets/css/banner-metabox-style.css'
+        );
     }
-}
+};
