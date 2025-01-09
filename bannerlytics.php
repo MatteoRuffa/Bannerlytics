@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Bannerlytics
-Plugin URI: https://github.com/MatteoRuffa/bannerlytics-plugin
+Plugin URI: https://github.com/MatteoRuffa/bannerlytics
 Description: Plugin che registra un CPT "banner", shortcode per visualizzarlo e template dedicato.
 Version: 1.0
 Author: Matteo R
