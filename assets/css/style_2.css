@@ -1,0 +1,94 @@
+/* Container principale del banner */
+.banner {
+    max-width: 960px !important;
+    height: 350px; /* Altezza fissa */
+    display: flex;
+    flex-wrap: nowrap;
+    border-radius: 8px;
+    margin: 100px auto;
+    overflow: hidden;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Colonna contenente l'immagine */
+.banner .banner-image-wrapper {
+    width: 40%; /* Proporzione dell'immagine */
+    height: 100%;
+}
+
+.banner .banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Adatta l'immagine mantenendo le proporzioni */
+    border-radius: 8px 0 0 8px;
+}
+
+/* Colonna contenente titolo, descrizione e bottone */
+.banner .content-wrapper {
+    width: 60%; /* Proporzione del contenuto */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Stile del titolo */
+.title-banner {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+/* Stile della descrizione */
+.margin-medium-bottom {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #555;
+}
+
+/* Stile del bottone */
+.banner .button {
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.banner .button:hover {
+    filter: brightness(85%);
+}
+
+/* Stile responsive per schermi piccoli */
+@media (max-width: 768px) {
+    .banner {
+        flex-direction: column; /* Impilamento verticale su dispositivi piccoli */
+        height: auto;
+    }
+    
+    .banner .banner-image-wrapper {
+        width: 100%;
+        height: 200px; /* Altezza fissa per l'immagine */
+    }
+
+    .banner .content-wrapper {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .title-banner {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .margin-medium-bottom {
+        text-align: center;
+    }
+
+    .banner .button {
+        margin: 0 auto;
+    }
+}

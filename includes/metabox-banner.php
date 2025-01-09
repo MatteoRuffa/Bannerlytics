@@ -214,8 +214,6 @@ function webperformer_banner_metabox_callback($post) {
     echo '</div>';
     echo '</div>'; // fine riga 6
 
-    echo '</div><!-- /.banner-fields-container -->';
-
     // -------------------- RIGA 7 --------------------
     echo '<div style="display:flex; gap:20px; margin-top:20px;">';
     // Slider per la larghezza del banner
@@ -226,6 +224,28 @@ function webperformer_banner_metabox_callback($post) {
     echo '</div>';
     echo '</div>'; // Fine riga 7
 
+
+    // -------------------- RIGA 8 --------------------
+    echo '<div style="display:flex; gap:20px; margin-top:20px;">';
+
+    // Campo di testo per il Border Radius del Banner
+    echo '<div style="flex: 1;">';
+    echo '<p><label><strong>Border Radius (px)</strong></label><br/>';
+    echo '<input type="text" name="border_radius_banner" value="' . esc_attr(get_post_meta($post->ID, '_border_radius_banner', true) ?: '5px') . '" placeholder="5px" style="width: 100%;" />';
+    echo '</p>';
+    echo '</div>';
+
+    // Campo di testo per il Box Shadow
+    echo '<div style="flex: 1;">';
+    echo '<p><label><strong>Box Shadow</strong></label><br/>';
+    echo '<input type="text" name="box_shadow_banner" value="' . esc_attr(get_post_meta($post->ID, '_box_shadow_banner', true) ?: '0px 0px 4px 1px rgba(0, 0, 0, 0.1)') . '" placeholder="0px 0px 4px 1px rgba(0, 0, 0, 0.1)" style="width: 100%;" />';
+    echo '</p>';
+    echo '</div>';
+
+    echo '</div>'; // Fine riga 8
+
+
+    echo '</div><!-- /.banner-fields-container -->';
 
     }
 
@@ -304,5 +324,11 @@ function webperformer_save_banner_meta($post_id) {
     if (isset($_POST['larghezza_banner'])) {
         update_post_meta($post_id, '_larghezza_banner', intval($_POST['larghezza_banner']));
     }
-    
+    if (isset($_POST['border_radius_banner'])) {
+        update_post_meta($post_id, '_border_radius_banner', sanitize_text_field($_POST['border_radius_banner']));
+    }
+    if (isset($_POST['box_shadow_banner'])) {
+        update_post_meta($post_id, '_box_shadow_banner', sanitize_text_field($_POST['box_shadow_banner']));
+    }
+
 }

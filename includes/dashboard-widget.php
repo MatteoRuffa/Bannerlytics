@@ -80,13 +80,14 @@ add_action('admin_enqueue_scripts', 'my_custom_dashboard_styles');
 function my_custom_dashboard_styles($hook_suffix) {
     if ($hook_suffix === 'index.php') {  // Carica gli stili e gli script solo nella dashboard principale
         wp_enqueue_style(
-            'M-M-banner-dashboard-styles',
+            'bannerlytics-dashboard-styles',
             plugin_dir_url(__FILE__) . '../assets/css/dashboard-style.css',
             array(),
             '1.0.0'
         );
         wp_enqueue_script(
-            'M-M-banner-dashboard-script',
+
+            'bannerlytics-dashboard-script',
             plugin_dir_url(__FILE__) . '../assets/js/dashboard-carousel.js',
             array('jquery'),
             '1.0.0',

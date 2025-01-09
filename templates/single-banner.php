@@ -36,6 +36,10 @@ get_header();
         //campo aggiuntivo gestione width
         $larghezza_banner           = get_post_meta($id, '_larghezza_banner', true) ?: 960;
 
+        //campo aggiuntivo per border-rdius e box-shadow
+        $border_radius_banner = get_post_meta($id, '_border_radius_banner', true) ?: 5;
+        $box_shadow_banner = get_post_meta($id, '_box_shadow_banner', true) ?: 10;
+
         // Se l'utente sceglie "nuova finestra"
         $target = ($apertura_link === 'nuova finestra') ? "target='__blank'" : '';
 
@@ -58,7 +62,9 @@ get_header();
         // l'HTML 
         $string .= '<article>';
         $string .= '<div class="section">';
-        $string .= '<div class="banner banner-' . esc_attr($id) . '" style=" width:' . esc_attr($larghezza_banner) . 'px;">
+
+        $string .= '<div class="banner banner-' . esc_attr($id) . '" style=" width:' . esc_attr($larghezza_banner) . 'px; border-radius:' . esc_attr($border_radius_banner) . '; box-shadow:' . esc_attr($box_shadow_banner) . ';">
+        
 
                         <div class="card-banner" style="background:' . esc_attr($colore_sfondo) . ';">
                             <div class="grid">
