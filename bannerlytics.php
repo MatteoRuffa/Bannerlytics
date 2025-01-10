@@ -86,6 +86,19 @@ add_action('admin_enqueue_scripts', function($hook_suffix) {
     }
 });
 
+// Funzione per includere lo script slider-controls.js in bannerlytics.php
+add_action('admin_enqueue_scripts', function($hook_suffix) {
+    if ($hook_suffix === 'bannerlytics_page_bannerlytics-editor-banner') {
+        wp_enqueue_script(
+            'slider-controls',
+            plugin_dir_url(__FILE__) . 'assets/js/slider-controls.js',
+            array('jquery'),
+            '1.0.0',
+            true
+        );
+    }
+});
+
 
 
 // Script metabox-preview (caricato solo quando si è nell'editor CPT banner)

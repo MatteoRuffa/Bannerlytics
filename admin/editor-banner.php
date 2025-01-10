@@ -207,15 +207,15 @@ function bannerlytics_editor_banner_page() {
         echo '<input type="text" name="colore_hover_bordo_bottone" id="colore_hover_bordo_bottone" value="' . esc_attr( $meta_data['colore_hover_bordo_bottone'] ) . '" placeholder="#000000">';
         echo '</p></div>';
         echo '</div>'; // Fine riga 6
-
-        // -------------------- RIGA 7 --------------------
-        echo '<div class="riga-7">';
-        echo '<div class="slider-container">';
-        echo '<p style="text-align: center;"><label for="larghezza_banner"><strong>Larghezza Banner</strong></label></p>';
-        echo '<input type="range" name="larghezza_banner" id="larghezza_banner" min="350" max="1200" value="' . esc_attr( $meta_data['larghezza_banner'] ) . '" class="slider-input" oninput="document.getElementById(\'larghezza-banner-output\').textContent = this.value + \"px\";">';
-        echo '<span id="larghezza-banner-output" class="slider-output">' . esc_html( $meta_data['larghezza_banner'] ) . 'px</span>';
-        echo '</div>';
-        echo '</div>'; // Fine riga 7
+        
+// -------------------- RIGA 7 --------------------
+echo '<div class="riga-7">';
+echo '<div class="slider-container">';
+echo '<p style="text-align: center;"><label for="larghezza_banner"><strong>Larghezza Banner</strong></label></p>';
+echo '<input type="range" name="larghezza_banner" id="container_width_slider" min="350" max="1200" value="' . esc_attr($meta_data['larghezza_banner']) . '" class="slider-input">';
+echo '<span id="width_value">' . esc_html($meta_data['larghezza_banner']) . ' px</span>';
+echo '</div>';
+echo '</div>'; // Fine riga 7
 
         // -------------------- RIGA 8 --------------------
         echo '<div class="riga-8">';
