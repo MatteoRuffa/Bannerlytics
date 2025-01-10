@@ -32,7 +32,7 @@ function my_banner_single_template($single) {
 
 
 // Enqueue del CSS del plugin
-add_action('wp_enqueue_scripts', 'my_banner_plugin_enqueue_assets', 999); 
+add_action('wp_enqueue_scripts', 'my_banner_plugin_enqueue_assets', 20); 
 function my_banner_plugin_enqueue_assets() {
     $css_url = plugin_dir_url(__FILE__) . 'assets/css/style.css';
     
@@ -78,27 +78,6 @@ function bannerlytics_deactivate() {
     flush_rewrite_rules();
 }
 register_deactivation_hook(__FILE__, 'bannerlytics_deactivate');
-
-
-// Funzione globale per caricare lo stile admin su tutte le pagine del plugin
-function bannerlytics_enqueue_admin_styles($hook_suffix) {
-    $admin_pages = array(
-        'toplevel_page_bannerlytics-dashboard',
-        'bannerlytics_page_bannerlytics-gestione-banner',
-        'bannerlytics_page_bannerlytics-editor-banner',
-    );
-
-    if ( in_array($hook_suffix, $admin_pages) ) {
-        wp_enqueue_style(
-            'bannerlytics-admin-styles',
-            plugin_dir_url(__FILE__) . '../assets/css/admin-style.css',
-            array(),
-            '1.0.0'
-        );
-    }
-}
-add_action('admin_enqueue_scripts', 'bannerlytics_enqueue_admin_styles');
-
 
 
 // Script metabox-preview (caricato solo quando si è nell'editor CPT banner)

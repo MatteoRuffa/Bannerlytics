@@ -141,3 +141,155 @@
         text-align: right;
     }
 }
+
+
+
+/* Stili generali admin */
+
+/* Sezione comune a tutte le pagine admin */
+.wrap h1 {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Sezione specifica per gestione-banner.php */
+.gestione-banner-table {
+    margin-top: 20px;
+}
+
+/* Stili per i pulsanti nelle azioni */
+.admin-actions {
+    display: flex;
+    gap: 5px; 
+}
+
+.admin-actions .button {
+    padding: 6px 12px; 
+}
+
+/* Admin Style Section: Editor Banner */
+
+/* Stile generico per il layout dell'editor */
+.editor-banner-layout {
+    display: flex !important;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Campi e layout di ogni riga */
+.editor-banner-layout .riga-1,
+.editor-banner-layout .riga-2,
+.editor-banner-layout .riga-3,
+.editor-banner-layout .riga-4,
+.editor-banner-layout .riga-5,
+.editor-banner-layout .riga-6,
+.editor-banner-layout .riga-8  {
+    display: flex;
+    gap: 20px;
+}
+
+.editor-banner-layout .riga-7{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.editor-banner-layout div > div {
+    flex: 1;
+}
+
+.editor-banner-layout label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.editor-banner-layout input[type="text"],
+.editor-banner-layout input[type="url"],
+.editor-banner-layout textarea {
+    width: 100%;
+    padding:  2px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Slider specifico */
+.editor-banner-layout input[type="range"] {
+    width: 50vw;
+    height: 8px;
+}
+
+/* Selettore immagine */
+.editor-banner-layout .select-banner-image {
+    margin-top: 10px;
+}
+
+/* Slider Output */
+.editor-banner-layout .slider-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.editor-banner-layout .slider-container label {
+    margin-bottom: 10px;
+}
+
+.editor-banner-layout .slider-container .slider-output {
+    display: block;
+    margin-top: 5px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Pulsanti */
+.editor-banner-layout .submit {
+    text-align: center;
+}
+
+.editor-banner-layout .submit input[type="submit"] {
+    background-color: #0073aa;
+    color: #fff;
+    border: none;
+    padding: 5px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.editor-banner-layout .submit input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Righe con tre campi */
+.editor-banner-layout .riga-1 > div,
+.editor-banner-layout .riga-2 > div,
+.editor-banner-layout .riga-3 > div,
+.editor-banner-layout .riga-4 > div,
+.editor-banner-layout .riga-5 > div,
+.editor-banner-layout .riga-6 > div {
+    flex: 1;
+    max-width: calc(33.33% - 20px);
+}
+
+/* Righe con tre campi */
+.editor-banner-layout .riga-8 {
+    flex: 1;
+    max-width: calc(100% - 20px);
+}
+
+/* Righe intere */
+.editor-banner-layout .riga-7 {
+    flex-direction: column;
+    align-items: center;
+}
+
+/* .editor-banner-layout .riga-8 > div {
+    max-width: 100%;
+} */
+
+.editor-banner-layout .riga-7 .slider-container {
+    width: 100%;
+}
