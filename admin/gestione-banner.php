@@ -17,15 +17,32 @@ function bannerlytics_gestione_banner_page() {
     echo '<div class="wrap">';
     echo '<h1>Gestione Banners</h1>';
     echo '<p>Questa è la pagina dedicata alla gestione di tutti i banner registrati.</p>';
-    echo '<table class="wp-list-table widefat fixed striped">';
-    echo '<thead><tr><th>ID</th><th>Titolo</th><th>Shortcode</th></tr></thead><tbody>';
+    echo '<table class="wp-list-table widefat fixed striped gestione-banner-table">';
+    echo '<thead><tr><th>ID</th><th>Titolo</th><th>Descrizione</th><th>Shortcode</th><th>Azioni</th></tr></thead><tbody>';
     if ( ! empty( $banners ) ) {
         foreach ( $banners as $banner ) {
             $shortcode = '[banner id="' . $banner->ID . '"]';
-            echo '<tr><td>' . $banner->ID . '</td><td>' . esc_html( $banner->post_title ) . '</td><td><code>' . esc_html( $shortcode ) . '</code></td></tr>';
+            $single_banner_link = get_permalink( $banner->ID ); // Link alla pagina single-banner
+            $edit_link = admin_url( 'admin.php?page=bannerlytics-editor-banner&banner_id=' . $banner->ID ); // Link per modificare
+            $delete_link = get_delete_post_link( $banner->ID ); // Link per eliminare il banner
+            $description = get_post_meta( $banner->ID, '_banner_description', true ); // Recupera la descrizione
+
+            echo '<tr>';
+            echo '<td>' . $banner->ID . '</td>';
+            echo '<td>' . esc_html( $banner->post_title ) . '</td>';
+            echo '<td>' . esc_html( $description ) . '</td>';
+            echo '<td><code>' . esc_html( $shortcode ) . '</code></td>';
+            echo '<td>
+                    <div class="admin-actions">
+                        <a href="' . esc_url( $single_banner_link ) . '" class="button button-secondary" target="_blank">Visualizza</a>
+                        <a href="' . esc_url( $edit_link ) . '" class="button button-primary">Modifica</a>
+                        <a href="' . esc_url( $delete_link ) . '" class="button button-link-delete" onclick="return confirm(\'Sei sicuro di voler eliminare questo banner?\')">Elimina</a>
+                    </div>
+                  </td>';
+            echo '</tr>';
         }
     } else {
-        echo '<tr><td colspan="3">Nessun banner trovato.</td></tr>';
+        echo '<tr><td colspan="5">Nessun banner trovato.</td></tr>';
     }
     echo '</tbody></table>';
     echo '</div>';
