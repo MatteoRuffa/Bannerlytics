@@ -51,13 +51,6 @@ function my_banner_admin_scripts($hook_suffix) {
         return;
     }
 
-    wp_enqueue_script(
-        'bannerlytics-admin-scripts',
-        plugin_dir_url(__FILE__) . 'assets/js/admin-scripts.js',
-        array('jquery'),
-        '1.0',
-        true
-    );
 
     wp_enqueue_style(
         'bannerlytics-admin-styles',
@@ -78,6 +71,21 @@ function bannerlytics_deactivate() {
     flush_rewrite_rules();
 }
 register_deactivation_hook(__FILE__, 'bannerlytics_deactivate');
+
+// Funzione per includere lo script in editor-banner.php:
+add_action('admin_enqueue_scripts', function($hook_suffix) {
+    if ($hook_suffix === 'bannerlytics_page_bannerlytics-editor-banner') {
+        wp_enqueue_media(); // Carica la libreria media di WordPress
+        wp_enqueue_script(
+            'preview-image-script',
+            plugin_dir_url(__FILE__) . 'assets/js/preview.js',
+            array('jquery'),
+            '1.0.0',
+            true
+        );
+    }
+});
+
 
 
 // Script metabox-preview (caricato solo quando si è nell'editor CPT banner)
