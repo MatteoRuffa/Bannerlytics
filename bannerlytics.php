@@ -42,35 +42,67 @@ function my_banner_plugin_enqueue_assets() {
     );
 }
 
-
-// Script metabox-preview (caricato solo quando si è nell'editor CPT banner)
+// Script per le pagine admin (menu e editor banner)
 add_action('admin_enqueue_scripts', 'my_banner_admin_scripts');
 function my_banner_admin_scripts($hook_suffix) {
-    if ($hook_suffix !== 'post.php' && $hook_suffix !== 'post-new.php') {
+    if ( $hook_suffix !== 'toplevel_page_bannerlytics-dashboard' &&
+         $hook_suffix !== 'bannerlytics_page_bannerlytics-gestione-banners' &&
+         $hook_suffix !== 'bannerlytics_page_bannerlytics-editor-banner' ) {
         return;
     }
 
-    global $post;
-    if (!$post || $post->post_type !== 'banner') {
-        return;
-    }
-
-    // Carica la libreria media di WordPress
-    wp_enqueue_media();
-
-    // Carica lo script personalizzato
     wp_enqueue_script(
-        'bannerlytics-preview',
-        plugin_dir_url(__FILE__) . 'assets/js/metabox-preview.js',
+        'bannerlytics-admin-scripts',
+        plugin_dir_url(__FILE__) . 'assets/js/admin-scripts.js',
         array('jquery'),
         '1.0',
         true
     );
 
-    // Carica lo stile opzionale per una migliore presentazione
     wp_enqueue_style(
-        'banner-metabox-style',
-        plugin_dir_url(__FILE__) . 'assets/css/banner-metabox-style.css'
+        'bannerlytics-admin-styles',
+        plugin_dir_url(__FILE__) . 'assets/css/style.css',
+        array(),
+        '1.0.0'
     );
 }
+
+// Attivazione del plugin con flush delle regole di permalink
+function bannerlytics_activate() {
+    flush_rewrite_rules();
+}
+register_activation_hook(__FILE__, 'bannerlytics_activate');
+
+// Disattivazione del plugin
+function bannerlytics_deactivate() {
+    flush_rewrite_rules();
+}
+register_deactivation_hook(__FILE__, 'bannerlytics_deactivate');
+
+
+
+// Script metabox-preview (caricato solo quando si è nell'editor CPT banner)
+// add_action('admin_enqueue_scripts', 'my_banner_admin_scripts');
+// function my_banner_admin_scripts($hook_suffix) {
+//     if ($hook_suffix !== 'post.php' && $hook_suffix !== 'post-new.php') {
+//         return;
+//     }
+
+//     global $post;
+//     if (!$post || $post->post_type !== 'banner') {
+//         return;
+//     }
+
+//     // Carica la libreria media di WordPress
+//     wp_enqueue_media();
+
+//     // Carica lo script personalizzato
+//     wp_enqueue_script(
+//         'bannerlytics-preview',
+//         plugin_dir_url(__FILE__) . 'assets/js/metabox-preview.js',
+//         array('jquery'),
+//         '1.0',
+//         true
+//     );
+// }
 

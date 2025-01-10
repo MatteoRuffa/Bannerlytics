@@ -33,7 +33,7 @@ function bannerlytics_register_admin_menu() {
     add_submenu_page(
         'bannerlytics-dashboard',
         'Gestione Banner',
-        'Gestione Banner',
+        'Tutti i Banners',
         'manage_options',
         'bannerlytics-gestione-banner',
         'bannerlytics_gestione_banner_page'

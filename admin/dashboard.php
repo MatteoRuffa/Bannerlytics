@@ -3,18 +3,11 @@ if (!defined('ABSPATH')) {
     exit; 
 }
 
-/**
- * =========================================================================
- * File: dashboard.php
- * Scopo: Definire la funzione di callback "bannerlytics_dashboard_page"
- *        che stampa una pagina "placeholder" per la Dashboard di BannerLytics.
- * =========================================================================
- */
-
+// Funzione per visualizzare la pagina Dashboard
 function bannerlytics_dashboard_page() {
-    // HTML di base (esempio)
     echo '<div class="wrap">';
-    echo '    <h1>BannerLytics - Dashboard</h1>';
-    echo '    <p>Benvenuto nella Dashboard di BannerLytics. Qui potrai vedere le statistiche e una panoramica dei tuoi banner.</p>';
+    echo '<h1>Benvenuto in BannerLytics!</h1>';
+    echo '<p>Questa è la tua dashboard principale. Da qui puoi navigare nelle sezioni del plugin.</p>';
     echo '</div>';
 }
+
