@@ -293,3 +293,39 @@
 .editor-banner-layout .riga-7 .slider-container {
     width: 100%;
 }
+
+/* Stili anteprima immagine */
+.banner-image-preview-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 10px;
+}
+
+.banner-preview-image {
+    max-width: 150px;
+    border-radius: 5px;
+}
+
+.preview-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.title-container, .color-container {
+    flex: 1;
+}
+
+.remove-banner-image {
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.select-banner-image {
+    width: 150px;
+}
+
+.flex-item {
+    flex: 1;
+}

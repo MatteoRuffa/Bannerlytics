@@ -101,30 +101,32 @@ function bannerlytics_editor_banner_page() {
         echo '</div>'; // Fine riga 1
 
         // -------------------- RIGA 2 --------------------
-        echo '<div>';
-        echo '<p><label for="immagine"><strong>Immagine</strong></label><br/></p>';
+        echo '<div class="riga-2">';
+        echo '<div class="preview-container">';
+        echo '<p><label for="immagine"><strong>Immagine</strong></label></p>';
         echo '<input type="hidden" id="banner-image-url" name="immagine" value="' . esc_url($meta_data['immagine']) . '">';
         echo '<button type="button" class="button select-banner-image">Seleziona immagine</button>';
 
         echo '<div class="banner-image-preview-wrapper">';
         if (!empty($meta_data['immagine'])) {
-            echo '<img id="banner-image-preview" src="' . esc_url($meta_data['immagine']) . '" style="max-width: 100%; margin-top: 10px; display: block;">';
-            echo '<button type="button" class="button remove-banner-image" style="margin-top: 10px;">Rimuovi immagine</button>';
+            echo '<img id="banner-image-preview" class="banner-preview-image" src="' . esc_url($meta_data['immagine']) . '">';
+            echo '<button type="button" class="button remove-banner-image">Rimuovi immagine</button>';
         } else {
-            echo '<img id="banner-image-preview" src="#" style="display: none;">';
-            echo '<button type="button" class="button remove-banner-image" style="margin-top: 10px; display: none;">Rimuovi immagine</button>';
+            echo '<img id="banner-image-preview" class="banner-preview-image" src="#" style="display: none;">';
+            echo '<button type="button" class="button remove-banner-image" style="display: none;">Rimuovi immagine</button>';
         }
         echo '</div>';
+        echo '</div>';
 
-        echo '<div>';
-        echo '<p><label for="titolo"><strong>Titolo</strong></label><br/>';
-        echo '<input type="text" name="titolo" id="titolo" value="' . esc_attr( $meta_data['titolo'] ) . '">';
-        echo '</p></div>';
+        echo '<div class="flex-item">';
+        echo '<p><label for="titolo"><strong>Titolo</strong></label></p>';
+        echo '<input type="text" name="titolo" id="titolo" value="' . esc_attr($meta_data['titolo']) . '">';
+        echo '</div>';
 
-        echo '<div>';
-        echo '<p><label for="colore_titolo"><strong>Colore Titolo</strong></label><br/>';
-        echo '<input type="text" name="colore_titolo" id="colore_titolo" value="' . esc_attr( $meta_data['colore_titolo'] ) . '" placeholder="#000000">';
-        echo '</p></div>';
+        echo '<div class="flex-item">';
+        echo '<p><label for="colore_titolo"><strong>Colore Titolo</strong></label></p>';
+        echo '<input type="text" name="colore_titolo" id="colore_titolo" value="' . esc_attr($meta_data['colore_titolo']) . '" placeholder="#000000">';
+        echo '</div>';
         echo '</div>'; // Fine riga 2
 
         // -------------------- RIGA 3 --------------------
