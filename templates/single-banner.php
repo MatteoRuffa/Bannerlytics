@@ -1,5 +1,4 @@
 <?php
-// Template aggiornato per visualizzare il singolo banner
 get_header(); 
 ?>
 
@@ -88,10 +87,10 @@ get_header();
         }
 
         $string .= '<img src="' . esc_url($immagine) . '" alt="Banner image" loading="lazy" class="banner-image">';
-        $string .= '</div>'; // .width-40
-        $string .= '</div>'; // .grid
-        $string .= '</div>'; // .card-banner
-        $string .= '</div>'; // .banner
+        $string .= '</div>'; 
+        $string .= '</div>'; 
+        $string .= '</div>'; 
+        $string .= '</div>'; 
 
         // Stampa l'output finale
         echo $string;

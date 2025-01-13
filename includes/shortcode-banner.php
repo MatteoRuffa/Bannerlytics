@@ -1,6 +1,6 @@
 <?php
 if (!defined('ABSPATH')) {
-    exit; // Protezione contro accessi diretti
+    exit; 
 }
 
 // create shortcode
@@ -8,14 +8,13 @@ add_shortcode('banner', 'post_banner_shortcode');
 function post_banner_shortcode($atts) {
     ob_start();
 
-    // Stesse opzioni di prima: definisci i parametri di default dello shortcode
     $atts = shortcode_atts(
         array(
-            'type'    => 'banner', // Il CPT di default
-            'order'   => 'date',   // Ordine
-            'orderby' => 'title',  // Campo di ordinamento
-            'posts'   => 1,        // Numero di banner da mostrare
-            'id'      => '',       // Se specificato, mostra un banner con ID particolare
+            'type'    => 'banner', 
+            'order'   => 'date',   
+            'orderby' => 'title',  /
+            'posts'   => 1,        
+            'id'      => '',       
         ),
         $atts
     );
@@ -66,8 +65,6 @@ function post_banner_shortcode($atts) {
                 $target = "target='__blank'";
             }
 
-            // Stessa concatenazione di stringhe di prima:
-            // (mantengo il CSS inline, la gestione di "destra"/"sinistra" ecc.)
             $string .= '<style>
             .banner-'. $post_id .' .button {
                 border: 1px solid '.esc_attr($colore_bordo_bottone).';
@@ -117,10 +114,10 @@ function post_banner_shortcode($atts) {
             }
 
             $string .= '<img src="' . esc_url($immagine) . '" alt="Banner image" loading="lazy" class="banner-image">';
-            $string .= '</div>'; // .width-40
-            $string .= '</div>'; // .grid
-            $string .= '</div>'; // .card-banner
-            $string .= '</div>'; // .banner
+            $string .= '</div>'; 
+            $string .= '</div>'; 
+            $string .= '</div>'; 
+            $string .= '</div>'; 
         }
     }
 
