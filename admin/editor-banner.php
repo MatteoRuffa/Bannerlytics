@@ -1,5 +1,4 @@
 <?php
-// File: editor-banner.php
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit;

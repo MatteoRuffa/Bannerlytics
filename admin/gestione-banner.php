@@ -1,5 +1,4 @@
 <?php
-// File: gestione-banner.php
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
@@ -22,10 +21,10 @@ function bannerlytics_gestione_banner_page() {
     if ( ! empty( $banners ) ) {
         foreach ( $banners as $banner ) {
             $shortcode = '[banner id="' . $banner->ID . '"]';
-            $single_banner_link = get_permalink( $banner->ID ); // Link alla pagina single-banner
-            $edit_link = admin_url( 'admin.php?page=bannerlytics-editor-banner&banner_id=' . $banner->ID ); // Link per modificare
-            $delete_link = get_delete_post_link( $banner->ID ); // Link per eliminare il banner
-            $description = get_post_meta( $banner->ID, '_banner_description', true ); // Recupera la descrizione
+            $single_banner_link = get_permalink( $banner->ID ); 
+            $edit_link = admin_url( 'admin.php?page=bannerlytics-editor-banner&banner_id=' . $banner->ID ); 
+            $delete_link = get_delete_post_link( $banner->ID ); 
+            $description = get_post_meta( $banner->ID, '_banner_description', true ); 
 
             echo '<tr>';
             echo '<td>' . $banner->ID . '</td>';
